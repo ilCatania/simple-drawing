@@ -10,7 +10,6 @@ buildscript {
 
 subprojects {
     apply plugin: 'groovy'
-    apply plugin: 'netbeans'
     apply plugin: 'eclipse-wtp'
     apply plugin: 'license'
     apply plugin: 'jacoco'
