@@ -18,10 +18,12 @@ package it.gcatania.simpledrawing.shape;
 import spock.lang.Specification
 import spock.lang.Unroll
 
-class LineSpec extends Specification {
+class LineSpec extends Specification
+{
 
     @Unroll
-    def "line #l1 equals line #l2"() {
+    def "line (#x1,#y1)-(#x2,#y2) equals line (#x3,#y3)-(#x4,#y4)"()
+    {
         Point p1 = new Point(x1, y1);
         Point p2 = new Point(x2, y2);
         Point p3 = new Point(x3, y3);
@@ -30,13 +32,13 @@ class LineSpec extends Specification {
         Line l2 = new Line(p3, p4);
 
         expect:
-        l1.hashCode() == l2.hashCode() && l1.equals( l2) && l2.equals( l1)
+        l1.hashCode() == l2.hashCode() && l1.equals(l2) && l2.equals(l1)
 
         where:
         x1 | y1 | x2 | y2 | x3 | y3 | x4 | y4
-        0 |  0 |  0 |  0 |  0 |  0 |  0 |  0
-        1 |  4 |  3 |  2 |  1 |  4 |  3 |  2
-        1 |  4 |  3 |  2 |  3 |  2 |  1 |  4
+        0  |  0 |  0 |  0 |  0 |  0 |  0 |  0
+        1  |  4 |  3 |  2 |  1 |  4 |  3 |  2
+        1  |  4 |  3 |  2 |  3 |  2 |  1 |  4
     }
 }
 
