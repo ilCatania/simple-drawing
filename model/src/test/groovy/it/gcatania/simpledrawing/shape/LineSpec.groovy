@@ -17,12 +17,12 @@ package it.gcatania.simpledrawing.shape;
 
 import spock.lang.Specification
 import spock.lang.Unroll
+import spock.lang.Specification.*
 
 class LineSpec extends Specification
 {
 
-    @Unroll
-    def "line (#x1,#y1)-(#x2,#y2) equals line (#x3,#y3)-(#x4,#y4)"()
+    @Unroll def"line (#x1,#y1)-(#x2,#y2) equals line (#x3,#y3)-(#x4,#y4)"()
     {
         Point p1 = new Point(x1, y1);
         Point p2 = new Point(x2, y2);
@@ -41,4 +41,3 @@ class LineSpec extends Specification
         1  |  4 |  3 |  2 |  3 |  2 |  1 |  4
     }
 }
-

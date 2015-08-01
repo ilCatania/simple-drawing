@@ -15,31 +15,49 @@
  */
 package it.gcatania.simpledrawing.shape
 
-class Line {
+class Line
+{
     private Point p1;
+
     private Point p2;
-    public Line(Point p1, Point p2) {
+
+    public Line( Point p1, Point p2 )
+    {
         this.p1 = p1;
         this.p2 = p2;
     }
-    public Line() {}
-    public Point getP1() {
+
+    public Line()
+    {
+    }
+
+    public Point getP1()
+    {
         return p1;
     }
-    public void setP1( Point p1 ) {
+
+    public void setP1( Point p1 )
+    {
         this.p1 = p1;
     }
-    public Point getP2() {
+
+    public Point getP2()
+    {
         return p2;
     }
-    public void setP2( Point p2 ) {
+
+    public void setP2( Point p2 )
+    {
         this.p2 = p2;
     }
+
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         // hashcode and equals must not be dependent on point order
-        return (1+Objects.hashCode(p1)) * (1+Objects.hashCode(p2));
+        return ( 1 + Objects.hashCode( p1 ) ) * ( 1 + Objects.hashCode( p2 ) );
     }
+
     @Override
     public boolean equals( Object obj ) {
         if (!(obj instanceof Line)) return false;
