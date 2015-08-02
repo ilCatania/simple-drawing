@@ -71,4 +71,15 @@ class Rectangle
     {
         return "Rectangle [$vertex1 - $vertex2]"
     }
+
+    /**
+     * @return the rectangle sides, as a list, in "conventional" clockwise order (assuming vertex 1 is top left and vertex 2 is bottom right)
+     */
+    public List<Line> getSides()
+    {
+
+
+        //TODO implement
+        return null
+    }
 }
