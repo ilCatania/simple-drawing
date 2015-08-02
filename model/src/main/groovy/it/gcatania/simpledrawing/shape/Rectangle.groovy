@@ -77,9 +77,15 @@ class Rectangle
      */
     public List<Line> getSides()
     {
-
-
-        //TODO implement
-        return null
+        // note that we never actually check that vertex 1 is top left and vertex 2 is bottom right, so the names here are only used for reference
+        Point topLeft = vertex1;
+        Point topRight = new Point(vertex1.x, vertex2.y);
+        Point bottomRight = vertex2;
+        Point bottomLeft = new Point(vertex2.x, vertex1.y);
+        Line top = new Line(topLeft, topRight);
+        Line right = new Line(topRight, bottomRight);
+        Line bottom = new Line(bottomLeft, bottomRight);
+        Line left = new Line(topLeft, bottomLeft);
+        return [top, right, bottom, left]
     }
 }
