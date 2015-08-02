@@ -21,6 +21,8 @@ import it.gcatania.simpledrawing.shape.Rectangle
 
 class Canvas
 {
+
+    public static final char LINE_COLOUR = 'x';
     private final int width;
     private final int height;
 
@@ -30,13 +32,31 @@ class Canvas
     {
         this.width = width;
         this.height = height;
-        this.pixelColours = new char[width][height];
-        //TODO fill pixels
+        pixelColours = new char[width][height];
+        for(int x = 0; x < width; x++)
+        {
+            for(int y = 0; y < height; y++) pixelColours[x][y] = ' ';
+        }
     }
 
     public void add(Line l)
     {
-        // TODO add impl
+        if(l == null) throw new NullPointerException();
+        if(l.horizontal)
+        {
+            int y = l.p1.y;
+            // TODO check against canvas boundaries and report the correct error message
+            int increment = Integer.signum(l.p2.x - l.p1.x)
+            for(int x = l.p1.x; x < l.p2.x; x+= increment) pixelColours[x][y] = LINE_COLOUR;
+        }
+        else if (l.vertical)
+        {
+            int x = l.p1.x;
+            // TODO check against canvas boundaries and report the correct error message
+            int increment = Integer.signum(l.p2.y - l.p1.y)
+            for(int y = l.p1.y; y < l.p2.y; y+= increment) pixelColours[x][y] = LINE_COLOUR;
+        }
+        else throw new UnsupportedOperationException('only horizontal or vertical lines are supported');
     }
 
     public void add(Rectangle r)
@@ -51,7 +71,7 @@ class Canvas
 
     public char getColourAt(Point p)
     {
-        // TODO add impl
-        return ' ';
+        // TODO check against canvas boundaries and report the correct error message
+        return pixelColours[p.x][p.y]
     }
 }
