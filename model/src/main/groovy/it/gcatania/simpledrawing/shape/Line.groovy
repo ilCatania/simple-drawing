@@ -59,7 +59,8 @@ class Line
     }
 
     @Override
-    public boolean equals( Object obj ) {
+    public boolean equals( Object obj )
+    {
         if (!(obj instanceof Line)) return false;
         Line l = obj;
         // hashcode and equals must not be dependent on point order
@@ -67,7 +68,18 @@ class Line
                 (Objects.equals(p1, l.p2) && Objects.equals( p2, l.p1))
     }
 
-    public String toString() {
+    public String toString()
+    {
         return "$p1 - $p2"
+    }
+
+    public boolean isHorizontal()
+    {
+        //TODO
+    }
+
+    public boolean isVertical()
+    {
+        //TODO
     }
 }

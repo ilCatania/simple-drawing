@@ -37,6 +37,21 @@ class LineSpec extends Specification
         1  |  4 |  3 |  2 |  3 |  2 |  1 |  4
     }
 
+    def "line is horizontal or vertical"()
+    {
+        Line l = createLine(x1, y1, x2, y2)
+
+        expect:
+        l.isHorizontal() == horizontal && l.isVertical() == vertical
+
+        where:
+        x1 | y1 | x2 | y2 || horizontal | vertical
+        0  |  0 |  0 |  0 ||       true |     true
+        2  |  3 | 10 |  3 ||       true |    false
+        1  |  4 |  1 |  7 ||      false |     true
+        0  |  0 |  5 |  2 ||      false |    false
+    }
+
     private static Line createLine(int x1, int y1, int x2, int y2)
     {
         Point p1 = new Point(x1, y1);
