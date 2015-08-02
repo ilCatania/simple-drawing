@@ -1,0 +1,20 @@
+apply plugin: 'application'
+
+run {
+    // workaround to the system console not being available when running from "gradle run"
+    // see http://stackoverflow.com/questions/13172137/console-application-with-java-and-gradle
+    standardInput = System.in
+}
+
+dependencies {
+    compile project(':model')
+//    compile 'jline:jline:2.12'
+//    compile sharedLibs.logback
+
+    // below: required for spock object mocking
+    testCompile 'cglib:cglib-nodep:3.1'
+    testCompile 'org.objenesis:objenesis:2.1'
+}
+
+mainClassName = 'it.gcatania.simpledrawing.cmd.SimpleDrawingApp'
+
