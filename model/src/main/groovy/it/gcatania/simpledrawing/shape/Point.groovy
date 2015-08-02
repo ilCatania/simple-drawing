@@ -15,13 +15,11 @@
  */
 package it.gcatania.simpledrawing.shape
 
-import groovy.transform.EqualsAndHashCode
 
 
 /**
  * a point representation in zero-based coordinates
  */
-@EqualsAndHashCode
 class Point
 {
     private int x;
@@ -61,5 +59,16 @@ class Point
     public String toString()
     {
         return "($x, $y)"
+    }
+
+    public boolean equals(Object o)
+    {
+        if(o instanceof Point) return x == o.x && y == o.y;
+        return false;
+    }
+
+    public int hashCode()
+    {
+        return Objects.hash(x, y);
     }
 }
