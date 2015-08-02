@@ -70,7 +70,7 @@ class CanvasSpec extends Specification
     {
         Canvas c = new Canvas(20, 4);
         c.add(new Line(new Point(0, 1), new Point(5, 1)))
-        c.add(new Line(new Point(5, 2), new Point(5, 4)))
+        c.add(new Line(new Point(5, 2), new Point(5, 3)))
         c.add(new Rectangle(new Point(15, 0), new Point(19, 2)))
         c.bucketFillFrom(new Point(9, 2), 'o' as char)
 
@@ -80,12 +80,31 @@ class CanvasSpec extends Specification
         [x, y, col]<< readCanvasColoursFromFile('complex.txt')
     }
 
+    @Unroll
+    def "canvas of size #w, #h contains or does not contain point (#x, #y)"()
+    {
+        expect:
+        new Canvas(w, h).contains(new Point(x, y)) == contained
+
+        where:
+        w | h | x | y || contained
+        0 | 0 | 0 | 0 || false
+        1 | 1 | 0 | 0 || true
+        1 | 1 | 1 | 1 || false
+        3 | 4 | 2 | 2 || true
+        3 | 4 | 2 | 4 || false
+        3 | 4 | 3 | 2 || false
+    }
+
     private static List readCanvasColoursFromFile(String name)
     {
         List colours = [];
         CanvasSpec.class.getResource("/$name").text.eachLine(
                 { String line, int y ->
-                    for(int x = 0; x < line.length(); x++) colours.add([x, y, line.charAt(x)])
+                    for(int x = 0; x < line.length(); x++)
+                    {
+                        colours.add([x, y, line.charAt(x)])
+                    }
                 })
         return colours;
     }
