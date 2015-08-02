@@ -24,12 +24,8 @@ class LineSpec extends Specification
 
     @Unroll def"line (#x1,#y1)-(#x2,#y2) equals line (#x3,#y3)-(#x4,#y4)"()
     {
-        Point p1 = new Point(x1, y1);
-        Point p2 = new Point(x2, y2);
-        Point p3 = new Point(x3, y3);
-        Point p4 = new Point(x4, y4);
-        Line l1 = new Line(p1, p2);
-        Line l2 = new Line(p3, p4);
+        Line l1 = createLine(x1, y1, x2, y2);
+        Line l2 = createLine(x3, y3, x4, y4);
 
         expect:
         l1.hashCode() == l2.hashCode() && l1.equals(l2) && l2.equals(l1)
@@ -39,5 +35,12 @@ class LineSpec extends Specification
         0  |  0 |  0 |  0 |  0 |  0 |  0 |  0
         1  |  4 |  3 |  2 |  1 |  4 |  3 |  2
         1  |  4 |  3 |  2 |  3 |  2 |  1 |  4
+    }
+
+    private static Line createLine(int x1, int y1, int x2, int y2)
+    {
+        Point p1 = new Point(x1, y1);
+        Point p2 = new Point(x2, y2);
+        return new Line(p1, p2);
     }
 }
