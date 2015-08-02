@@ -40,7 +40,7 @@ class CanvasSpec extends Specification
         c.getColourAt(new Point(x, y)) == 'x'
 
         where:
-        [x, y]<< [[3], 1..<3].combinations()
+        [x, y]<< [[3], 1..3].combinations()
     }
 
     def "canvas contains Xes after adding a rectangle"()

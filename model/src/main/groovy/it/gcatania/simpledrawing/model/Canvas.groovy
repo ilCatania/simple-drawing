@@ -47,14 +47,14 @@ class Canvas
             int y = l.p1.y;
             // TODO check against canvas boundaries and report the correct error message
             int increment = Integer.signum(l.p2.x - l.p1.x)
-            for(int x = l.p1.x; x < l.p2.x; x+= increment) pixelColours[x][y] = LINE_COLOUR;
+            for(int x = l.p1.x; x <= l.p2.x; x+= increment) pixelColours[x][y] = LINE_COLOUR;
         }
         else if (l.vertical)
         {
             int x = l.p1.x;
             // TODO check against canvas boundaries and report the correct error message
             int increment = Integer.signum(l.p2.y - l.p1.y)
-            for(int y = l.p1.y; y < l.p2.y; y+= increment) pixelColours[x][y] = LINE_COLOUR;
+            for(int y = l.p1.y; y <= l.p2.y; y+= increment) pixelColours[x][y] = LINE_COLOUR;
         }
         else throw new UnsupportedOperationException('only horizontal or vertical lines are supported');
     }
