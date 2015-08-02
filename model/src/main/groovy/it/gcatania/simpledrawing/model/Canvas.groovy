@@ -61,7 +61,8 @@ class Canvas
 
     public void add(Rectangle r)
     {
-        //TODO add impl
+        if(r == null) throw new NullPointerException();
+        r.sides.each {add(it)}
     }
 
     public void bucketFillFrom(Point p, char colour)
