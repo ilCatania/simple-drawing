@@ -52,7 +52,7 @@ class CanvasSpec extends Specification
         c.getColourAt(new Point(x, y)) == 'x'
 
         where:
-        [x, y]<< [1..3, 1..3].combinations() - [2, 2]
+        [x, y]<< [1..3, 1..3].combinations() - [[2, 2]]
     }
 
     def "canvas is bucket filled"()
