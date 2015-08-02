@@ -17,6 +17,10 @@ package it.gcatania.simpledrawing.shape
 
 import groovy.transform.EqualsAndHashCode
 
+
+/**
+ * a point representation in zero-based coordinates
+ */
 @EqualsAndHashCode
 class Point
 {
@@ -54,7 +58,8 @@ class Point
         this.y = y;
     }
 
-    public String toString() {
+    public String toString()
+    {
         return "($x, $y)"
     }
 }
