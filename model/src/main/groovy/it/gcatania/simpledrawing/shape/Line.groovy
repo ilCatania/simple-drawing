@@ -75,11 +75,11 @@ class Line
 
     public boolean isHorizontal()
     {
-        //TODO
+        return p1.y == p2.y
     }
 
     public boolean isVertical()
     {
-        //TODO
+        return p1.x == p2.x
     }
 }
