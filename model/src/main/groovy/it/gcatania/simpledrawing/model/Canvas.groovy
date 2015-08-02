@@ -41,7 +41,7 @@ class Canvas
 
     public void add(Line l)
     {
-        if(l == null) throw new NullPointerException();
+        validate(l);
         if(l.horizontal)
         {
             int y = l.p1.y;
@@ -61,7 +61,7 @@ class Canvas
 
     public void add(Rectangle r)
     {
-        if(r == null) throw new NullPointerException();
+        validate(r);
         r.sides.each {add(it)}
     }
 
@@ -72,7 +72,38 @@ class Canvas
 
     public char getColourAt(Point p)
     {
-        // TODO check against canvas boundaries and report the correct error message
+        validate(p);
         return pixelColours[p.x][p.y]
+    }
+
+    public boolean contains(Point p)
+    {
+        return p.x >= 0 && p.x < width && p.y >= 0 && p.y < height
+    }
+
+    private void setColour(Point p, char newColour)
+    {
+        validate(p);
+        pixelColours[p.x][p.y] = newColour;
+    }
+
+    private void validate(Point p)
+    {
+        if(p== null) throw new IllegalArgumentException("No point provided")
+        if(!contains(p)) throw new IllegalArgumentException("Point $p is outside of current canvas");
+    }
+
+    private void validate(Line l)
+    {
+        if(l== null) throw new IllegalArgumentException("No line provided")
+        validate(l.p1);
+        validate(l.p2);
+    }
+
+    private void validate(Rectangle r)
+    {
+        if(r== null) throw new IllegalArgumentException("No rectangle provided")
+        validate(r.vertex1);
+        validate(r.vertex2);
     }
 }
