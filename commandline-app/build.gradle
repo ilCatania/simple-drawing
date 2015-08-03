@@ -12,7 +12,8 @@ dependencies {
 //    compile sharedLibs.logback
 
     // below: required for spock object mocking
-    testCompile 'cglib:cglib-nodep:3.1'
+    testCompile 'com.github.cglib.cglib:cglib-nodep:5503bcca74' // required due to cglib 3.1 issues with java8, see https://github.com/cglib/cglib/issues/8
+    // testCompile 'cglib:cglib-nodep:3.1'
     testCompile 'org.objenesis:objenesis:2.1'
 }
 
