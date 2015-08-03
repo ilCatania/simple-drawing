@@ -28,7 +28,7 @@ class RectangleSpec extends Specification
         Rectangle r = createRectangle(x1, y1, x2, y2)
 
         expect:
-        r.sides == [up, right, down, left]
+        new HashSet(r.sides) == new HashSet([up, right, down, left])
 
         where:
         x1 | y1 | x2 | y2 ||                     up |                  right |                   down |                   left
